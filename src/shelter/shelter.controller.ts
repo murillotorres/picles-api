@@ -19,7 +19,6 @@ export class ShelterController {
         return await this.getShelterDetailsUseCase.run(null)
     }
 
-    // Atualização de informações pontuais de abrigos de animais
     @Put()
     async updateShelterDetails(@Body() input: UpdateShelterControllerInput):
         Promise<UpdateShelterDetailsUseCaseOutput> {
