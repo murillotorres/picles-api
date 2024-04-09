@@ -12,6 +12,13 @@ export class ShelterRepository implements IShelterRepository {
     ){}
 
     async get(): Promise<Shelter> {
-        return await this.shelterModel.findOne()
+        return await this.shelterModel.findOne();
+    }
+
+    async update(data: Partial<Shelter>): Promise<void> {
+        await this.shelterModel.updateOne(null, {
+            ...data,
+            updateAt: new Date()
+        })
     }
 }
