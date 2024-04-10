@@ -1,10 +1,10 @@
 import { IUseCase } from "src/domain/iusecase.interface";
-import GetPetByIdUseCaseInput from "./get.pet.by.id.usecase.input";
-import GetPetByIdUseCaseOutput from "./get.pet.by.id.usecase.output";
+import GetPetByIdUseCaseInput from "./dtos/get.pet.by.id.usecase.input";
+import GetPetByIdUseCaseOutput from "./dtos/get.pet.by.id.usecase.output";
 import { Inject, Injectable } from "@nestjs/common";
-import PetTokens from "src/pet/pet.tokens";
-import IPetRepository from "src/pet/interfaces/pet.repository.interface";
-import { Pet } from "src/pet/schemas/pet.schemas";
+import PetTokens from "../pet.tokens";
+import IPetRepository from "../interfaces/pet.repository.interface";
+import { Pet } from "../schemas/pet.schema";
 import PetNotFoundError from "src/domain/errors/pet.not.found.error";
 
 @Injectable()
@@ -13,12 +13,12 @@ export default class GetPetByIdUseCase implements IUseCase<GetPetByIdUseCaseInpu
     constructor(
         @Inject(PetTokens.petRepository)
         private readonly petRepository: IPetRepository
-    ){}
-
+    ) { }
+    
     async run(input: GetPetByIdUseCaseInput): Promise<GetPetByIdUseCaseOutput> {
-        const pet = await this.petRepository.getById(input.id)
+        const pet = await this.getPetById(input.id)
 
-        if (pet == null) {
+        if (pet === null) {
             throw new PetNotFoundError()
         }
 
@@ -26,7 +26,7 @@ export default class GetPetByIdUseCase implements IUseCase<GetPetByIdUseCaseInpu
             id: pet._id,
             name: pet.name,
             type: pet.type,
-            size: pet.type,
+            size: pet.size,
             gender: pet.gender,
             bio: pet.bio,
             photo: null,

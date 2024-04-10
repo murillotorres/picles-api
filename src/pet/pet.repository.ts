@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import IPetRepository from "./interfaces/pet.repository.interface";
-import { Pet } from "./schemas/pet.schemas";
 import { error } from "console";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
+import { Pet } from "./schemas/pet.schema";
 
 @Injectable()
 export default class PetRepository implements IPetRepository {
@@ -25,3 +25,5 @@ export default class PetRepository implements IPetRepository {
         })
     }
 }
+
+
