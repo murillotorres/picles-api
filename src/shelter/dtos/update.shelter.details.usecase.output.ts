@@ -4,7 +4,7 @@ export default class UpdateShelterDetailsUseCaseOutput {
     email: string;
     phone: string;
     createdAt: Date;
-    updateAt: Date;
+    updatedAt: Date;
 
     constructor(data: Partial<UpdateShelterDetailsUseCaseOutput>) {
         Object.assign(this,data);

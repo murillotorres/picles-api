@@ -2,7 +2,7 @@
 import { IUseCase } from "src/domain/iusecase.interface"; 
 import GetShelterDetailsUseCaseOutput from "./dtos/get.shelter.details.usecase.output";
 import { Inject } from "@nestjs/common";
-import { ShelterRepository } from "../shelter.repository";
+// import { ShelterRepository } from "../shelter.repository";
 import ShelterTokens from "../shelter.token";
 import IShelterRepository from "../interfaces/shelter.repository.interface";
 
