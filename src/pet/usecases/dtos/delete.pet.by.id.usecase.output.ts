@@ -1,3 +1,3 @@
 export default class DeletePetByIdUseCaseOutput {
-    id: string
+    message: string = 'Sucessfully Deleted'
 }
